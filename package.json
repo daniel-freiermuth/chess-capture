@@ -1,0 +1,9 @@
+{
+  "name": "chess-capture",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "serve": "npx http-server site -c-1"
+  }
+}

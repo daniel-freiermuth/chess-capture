@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chess Capture</title>
+  <meta name="description" content="Photograph a chess board and open the position in Lichess.">
+  <meta name="theme-color" content="#2b2622">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Chess Capture</h1>
+  </header>
+
+  <main>
+    <section class="photo" aria-label="Photo">
+      <div class="photo-buttons">
+        <label class="button primary">
+          Take photo
+          <input id="camera-input" type="file" accept="image/*" capture="environment" hidden>
+        </label>
+        <label class="button">
+          Choose image
+          <input id="file-input" type="file" accept="image/*" hidden>
+        </label>
+      </div>
+      <img id="photo" alt="The photographed board" hidden>
+      <p id="photo-hint" class="hint">Take a photo of the board, then set up the position below to match it.</p>
+    </section>
+
+    <section class="editor" aria-label="Position">
+      <div id="board" class="board" role="grid" aria-label="Chess board"></div>
+      <div id="palette" class="palette" role="radiogroup" aria-label="Piece to place"></div>
+
+      <div class="row">
+        <button id="start-button" class="button" type="button">Start position</button>
+        <button id="clear-button" class="button" type="button">Clear</button>
+        <button id="flip-button" class="button" type="button" aria-pressed="false">Flip</button>
+      </div>
+
+      <div class="row segmented" role="radiogroup" aria-label="Side to move">
+        <span class="label">To move</span>
+        <button id="turn-w" type="button" role="radio" aria-checked="true">White</button>
+        <button id="turn-b" type="button" role="radio" aria-checked="false">Black</button>
+      </div>
+
+      <ul id="problems" class="problems" aria-live="polite"></ul>
+    </section>
+
+    <section class="export" aria-label="Open in Lichess">
+      <a id="analysis-link" class="button primary wide" target="_blank" rel="noopener">Analyse on Lichess</a>
+      <a id="editor-link" class="button wide" target="_blank" rel="noopener">Open in Lichess board editor</a>
+      <div class="fen">
+        <code id="fen"></code>
+        <button id="copy-button" class="button" type="button">Copy FEN</button>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
